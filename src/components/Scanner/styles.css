@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap");
+
+.scanner-section-wrapper {
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+    height: 500px;
+    /* Reduced from 100vh for better page flow */
+}
+
+.scanner-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+.scanner-control-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.scanner-control-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.scanner-speed-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.scanner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-stream {
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+}
+
+.card-line {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    white-space: nowrap;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+}
+
+.card-line:active {
+    cursor: grabbing;
+}
+
+.card-line.dragging {
+    cursor: grabbing;
+}
+
+.card-wrapper {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    flex-shrink: 0;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-normal {
+    background: transparent;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    color: white;
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
+    clip-path: inset(0 0 0 var(--clip-right, 0%));
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    filter: brightness(1.1) contrast(1.1);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-image:hover {
+    filter: brightness(1.2) contrast(1.2);
+}
+
+.card-ascii {
+    background: transparent;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
+}
+
+.ascii-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: rgba(220, 210, 255, 0.6);
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    line-height: 13px;
+    overflow: hidden;
+    white-space: pre;
+    animation: glitch 0.1s infinite linear alternate-reverse;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+    -webkit-mask-image: linear-gradient(to right,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.4) 80%,
+            rgba(0, 0, 0, 0.2) 100%);
+    mask-image: linear-gradient(to right,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.8) 30%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.4) 80%,
+            rgba(0, 0, 0, 0.2) 100%);
+}
+
+@keyframes glitch {
+    0% {
+        opacity: 1;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    16% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.scanner-beam {
+    display: none;
+    /* Controlled by JS? In the original it was display:none then controlled? No, it has display:none in CSS but scanning logic might toggle. Actually the provided CSS says display:none initially but it should probably be visible if active? Wait, the provided CSS has .scanner { display: none ... } but the JS seems to use canvas for the glow. Actually looking at the provided CSS: .scanner { display: none; ... } Is it unused? Ah, the JS ParticleScanner draws to canvas. The div .scanner might be a fallback or vestigial. I will keep it as is. */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 300px;
+    /* ... styles ... */
+    z-index: 10;
+}
+
+.scan-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 255, 0.4),
+            transparent);
+    animation: scanEffect 0.6s ease-out;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes scanEffect {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 250px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#scannerCanvas {
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 300px;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.inspiration-credit {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Roboto Mono", monospace;
+    font-size: 12px;
+    font-weight: 900;
+    color: #ff9a9c;
+    z-index: 100;
+    /* ensured z-index */
+    text-align: center;
+}
+
+.inspiration-credit a {
+    color: #ff9a9c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.inspiration-credit a:hover {
+    color: #ff7a7c;
+}
