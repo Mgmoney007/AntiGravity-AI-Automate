@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AntiGravity AI Automate
 
-## Getting Started
+A modern, high-conversion landing page for AI automation services built with Next.js 15 and Tailwind CSS v4.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=flat-square&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animation-FF0055?style=flat-square&logo=framer)
+
+## ✨ Features
+
+- **Premium UI/UX** - Glassmorphism, gradients, and micro-animations
+- **Mobile-First Design** - Fully responsive with hamburger navigation
+- **Interactive Components** - 3D particle scanner, animated stats, hover effects
+- **Conversion Optimized** - Strategic CTA placement and visual hierarchy
+- **Modern Stack** - Next.js 15, React 19, TypeScript, Tailwind CSS v4
+
+## 🚀 Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/Mgmoney007/AntiGravity-AI-Automate.git
+
+# Navigate to project
+cd AntiGravity-AI-Automate
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css      # Global styles & Tailwind config
+│   ├── layout.tsx       # Root layout with fonts
+│   └── page.tsx         # Main landing page
+├── components/
+│   ├── sections/        # Page sections
+│   │   ├── HeroSection.tsx
+│   │   ├── FeatureGrid.tsx
+│   │   ├── Integrations.tsx
+│   │   ├── Testimonials.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── FAQ.tsx
+│   │   └── FinalCTA.tsx
+│   ├── ui/              # Reusable UI components
+│   │   ├── Button.tsx
+│   │   ├── PremiumCard.tsx
+│   │   ├── Accordion.tsx
+│   │   └── ...
+│   └── Scanner/         # 3D particle scanner module
+└── lib/
+    └── utils.ts         # Utility functions
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+### Colors
+- **Primary**: Purple gradient (#7C3AED → #8B5CF6)
+- **Accent**: Cyan (#06B6D4), Orange (#F97316)
+- **Background**: Deep navy (#0A0A0F)
+- **Glass**: White/5 with backdrop blur
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Typography
+- **Headings**: Space Grotesk (extrabold)
+- **Body**: Inter (regular/medium)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+| Technology | Purpose |
+|------------|---------|
+| Next.js 15 | React framework with App Router |
+| React 19 | UI library |
+| TypeScript | Type safety |
+| Tailwind CSS v4 | Utility-first styling |
+| Framer Motion | Animations |
+| Lucide React | Icons |
+| Three.js | 3D particle effects |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Responsive Breakpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Mobile**: < 640px
+- **Tablet**: 640px - 1024px  
+- **Desktop**: > 1024px
+
+## 📄 License
+
+MIT License - feel free to use for your own projects.
+
+---
+
+Built with ❤️ using Next.js and Tailwind CSS
