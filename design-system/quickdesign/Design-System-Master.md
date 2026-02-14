@@ -6,9 +6,9 @@
 
 ---
 
-**Project:** QuickDesign
+**Project:** Ai Automate
 **Generated:** 2026-02-02 01:48:11
-**Category:** Service Landing Page
+**Category:** Agency Landing Page
 
 ---
 

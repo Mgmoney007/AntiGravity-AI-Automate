@@ -96,4 +96,4 @@ MIT License - feel free to use for your own projects.
 
 ---
 
-Built with ❤️ using Next.js and Tailwind CSS
+Built with ❤️ by The Great OG
