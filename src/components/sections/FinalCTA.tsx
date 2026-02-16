@@ -9,7 +9,7 @@ const FinalCTA = ({ theme = 'dark' }: FinalCTAProps) => {
     const isLight = theme === 'light';
 
     return (
-        <section className="py-32 relative overflow-hidden">
+        <section id="contact" className="py-32 relative overflow-hidden">
             {/* Glow Background */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] blur-[120px] rounded-full pointer-events-none bg-emerald-500/20" />
 

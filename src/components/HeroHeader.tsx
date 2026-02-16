@@ -53,9 +53,11 @@ const HeroHeader = () => {
 
                 {/* CTAs (Desktop) */}
                 <div className="hidden md:flex items-center gap-2">
-                    <Button variant="primary" size="sm" className="rounded-full px-5 inline-flex whitespace-nowrap">
-                        Book Audit
-                    </Button>
+                    <Link href="#contact">
+                        <Button variant="primary" size="sm" className="rounded-full px-5 inline-flex whitespace-nowrap">
+                            Book Audit
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -83,9 +85,11 @@ const HeroHeader = () => {
                             <Link href="#process" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white hover:text-cyan-400 py-2 transition-all">Process</Link>
                             <Link href="#case-studies" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white hover:text-cyan-400 py-2 transition-all">Case Studies</Link>
                             <div className="pt-2 border-t border-white/10">
-                                <Button variant="primary" size="md" className="w-full rounded-full">
-                                    Book Audit
-                                </Button>
+                                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
+                                    <Button variant="primary" size="md" className="w-full rounded-full">
+                                        Book Audit
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </motion.div>
