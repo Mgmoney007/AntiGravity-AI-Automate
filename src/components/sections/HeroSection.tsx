@@ -4,7 +4,9 @@ import React from 'react';
 import HeroHeadline from '../HeroHeadline';
 import StatsCard from '../StatsCard';
 import Badge from '../ui/Badge';
+import Button from '../ui/Button';
 import { motion } from 'framer-motion';
+import { Play } from 'lucide-react';
 
 const HeroSection = () => {
     return (
@@ -29,10 +31,21 @@ const HeroSection = () => {
                     We design and deploy AI systems that replace manual work, reduce overhead, and run your operations for you.
                 </p>
 
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-12 justify-center w-full">
+                    <Button variant="primary" size="md" className="w-full sm:w-auto group shadow-glow hover:shadow-glow-cyan transition-all duration-300">
+                        Book Strategy Call
+                        <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
+                    </Button>
+
+                    <Button variant="secondary" size="md" className="w-full sm:w-auto group !border-white/20 hover:!border-brand-cyan/50 hover:bg-white/5">
+                        <Play className="w-4 h-4 mr-2 fill-current" />
+                        View Case Studies
+                    </Button>
+                </div>
+
                 {/* StatsCard */}
                 <StatsCard />
-
-                {/* CTA Row - Moved to StatsCard */}
 
             </div>
         </section>

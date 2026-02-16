@@ -43,7 +43,7 @@ export default function Pricing() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-8">
                     {plans.map((plan, i) => (
-                        <div key={i} className={`relative flex flex-col h-full ${plan.popular ? '-mt-8 mb-8 z-10' : ''}`}>
+                        <div key={i} className={`relative flex flex-col h-full ${plan.popular ? 'md:-mt-8 md:mb-8 z-10' : ''}`}>
                             {plan.popular && (
                                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
                                     <div className="bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-bold px-6 py-1.5 rounded-full shadow-[0_0_20px_rgba(79,70,229,0.5)] border border-white/20">

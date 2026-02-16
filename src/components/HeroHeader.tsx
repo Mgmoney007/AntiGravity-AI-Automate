@@ -3,17 +3,34 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Button from './ui/Button';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Layers, Menu, X } from 'lucide-react';
 
 const HeroHeader = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [hidden, setHidden] = useState(false);
+
+    const { scrollY } = useScroll();
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const previous = scrollY.getPrevious() ?? 0;
+        if (latest > previous && latest > 150) {
+            setHidden(true);
+            setMobileMenuOpen(false);
+        } else {
+            setHidden(false);
+        }
+    });
 
     return (
         <motion.header
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            variants={{
+                visible: { y: 0, opacity: 1 },
+                hidden: { y: "-140%", opacity: 0 },
+            }}
+            initial="hidden"
+            animate={hidden ? "hidden" : "visible"}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4"
         >
             <nav className="bg-bg-page/80 backdrop-blur-md border border-glass-border rounded-full px-3 md:px-[12px] py-2 flex items-center gap-4 md:gap-8 lg:gap-12 w-full max-w-[1000px] justify-between shadow-2xl">

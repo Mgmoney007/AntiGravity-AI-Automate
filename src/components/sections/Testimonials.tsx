@@ -1,4 +1,7 @@
-import { Marquee } from "@/components/ui/marquee";
+"use client";
+
+import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { PremiumCard } from '../ui/PremiumCard';
 
 const testimonials = [
@@ -34,13 +37,9 @@ const testimonials = [
     }
 ];
 
-// Split testimonials into two rows for the marquee effect
-const firstRow = testimonials.slice(0, testimonials.length / 2);
-const secondRow = testimonials.slice(testimonials.length / 2);
-
 function TestimonialCard({ quote, author, role }: { quote: string; author: string; role: string }) {
     return (
-        <PremiumCard className="w-[350px] flex-shrink-0 flex flex-col h-full justify-between">
+        <PremiumCard className="w-[300px] md:w-[350px] flex-shrink-0 flex flex-col h-full justify-between select-none">
             <div>
                 <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, j) => (
@@ -58,32 +57,44 @@ function TestimonialCard({ quote, author, role }: { quote: string; author: strin
 }
 
 export default function Testimonials() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            if (containerRef.current) {
+                setWidth(containerRef.current.scrollWidth - containerRef.current.offsetWidth);
+            }
+        };
+
+        updateWidth();
+        window.addEventListener('resize', updateWidth);
+        return () => window.removeEventListener('resize', updateWidth);
+    }, []);
+
     return (
-        <section className="py-24 overflow-hidden">
+        <section className="py-24 overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-4 mb-12">
                 <h2 className="section-heading text-center">
                     Trusted by Industry Leaders
                 </h2>
             </div>
 
-            <div className="relative">
-                {/* Gradient fade edges */}
-                <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-brand-black to-transparent z-10" />
-                <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-brand-black to-transparent z-10" />
-
-                {/* First row - scrolls left */}
-                <Marquee pauseOnHover className="[--duration:40s] mb-6">
-                    {firstRow.map((t, i) => (
-                        <TestimonialCard key={i} {...t} />
-                    ))}
-                </Marquee>
-
-                {/* Second row - scrolls right (reversed) */}
-                <Marquee pauseOnHover reverse className="[--duration:40s]">
-                    {secondRow.map((t, i) => (
-                        <TestimonialCard key={i} {...t} />
-                    ))}
-                </Marquee>
+            <div className="px-4">
+                <motion.div
+                    ref={containerRef}
+                    className="cursor-grab active:cursor-grabbing overflow-hidden"
+                >
+                    <motion.div
+                        drag="x"
+                        dragConstraints={{ right: 0, left: -width }}
+                        className="flex gap-6 w-fit"
+                    >
+                        {testimonials.map((t, i) => (
+                            <TestimonialCard key={i} {...t} />
+                        ))}
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
