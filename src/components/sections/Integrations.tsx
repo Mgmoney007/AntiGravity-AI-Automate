@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { ShimmerButton } from '../ui/shimmer-button';
 import IntegrationDiagram from './IntegrationDiagram';
 
@@ -21,20 +21,31 @@ const Integrations = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <h2 className="section-heading mb-6">
-                            Integrations
+                            Integrate with your current Stack
                         </h2>
                         <p className="section-subheading mb-8">
                             Supports <span className="text-white font-semibold">100+ integrations</span> and counting.
                             Connect with your favorite tools seamlessly.
                         </p>
 
-                        <ul className="grid grid-cols-2 gap-x-8 lg:gap-x-24 gap-y-2 mb-8 text-left text-slate-300 list-disc pl-5">
-                            <li>Google Drive</li>
-                            <li>WhatsApp</li>
-                            <li>Messenger</li>
-                            <li>Notion</li>
-                            <li>Slack</li>
-                            <li>Zapier</li>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 mb-10 text-left">
+                            {[
+                                "Google Drive",
+                                "WhatsApp",
+                                "Messenger",
+                                "Notion",
+                                "Slack",
+                                "Zapier"
+                            ].map((item, idx) => (
+                                <li key={idx} className="flex items-center gap-4">
+                                    <div className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-950/40 flex items-center justify-center border border-blue-900/50">
+                                        <Check className="w-4 h-4 text-blue-500" strokeWidth={3} />
+                                    </div>
+                                    <span className="text-lg text-slate-300 font-medium tracking-wide">
+                                        {item}
+                                    </span>
+                                </li>
+                            ))}
                         </ul>
 
 

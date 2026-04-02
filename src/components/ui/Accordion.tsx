@@ -20,18 +20,18 @@ const AccordionItem = ({ question, answer, isOpen, onClick, index }: AccordionIt
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
             className={cn(
-                "relative group rounded-2xl overflow-hidden transition-all duration-300",
-                "bg-slate-900/50 backdrop-blur-sm border",
+                "relative group rounded-2xl overflow-hidden transition-all duration-500",
+                "backdrop-blur-sm border",
                 isOpen
-                    ? "border-primary/30 shadow-[0_0_30px_rgba(139,92,246,0.15)]"
-                    : "border-white/10 hover:border-white/20"
+                    ? "bg-gradient-to-br from-[#0B152A] to-[#111A31] border-blue-500/50 shadow-[0_0_40px_rgba(59,130,246,0.2)]"
+                    : "bg-slate-900/50 border-white/10 hover:border-white/20 hover:bg-slate-900/80"
             )}
         >
             {/* Gradient glow on hover/open */}
             <div className={cn(
-                "absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none",
-                "bg-gradient-to-br from-primary/5 via-transparent to-cyan-500/5",
-                (isOpen || "group-hover:opacity-100")
+                "absolute inset-0 transition-opacity duration-500 pointer-events-none",
+                "bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10",
+                isOpen ? "opacity-100" : "opacity-0 group-hover:opacity-100"
             )} />
 
             <button
@@ -40,16 +40,16 @@ const AccordionItem = ({ question, answer, isOpen, onClick, index }: AccordionIt
                 aria-expanded={isOpen}
             >
                 <span className={cn(
-                    "text-lg font-medium transition-colors duration-300 pr-4",
-                    isOpen ? "text-white" : "text-slate-200 group-hover:text-white"
+                    "text-lg font-medium transition-colors duration-500 pr-4",
+                    isOpen ? "text-blue-300" : "text-slate-200 group-hover:text-white"
                 )}>
                     {question}
                 </span>
 
                 <span className={cn(
-                    "flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300",
+                    "flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500",
                     isOpen
-                        ? "bg-primary text-white rotate-0"
+                        ? "bg-blue-500 text-white rotate-0 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
                         : "bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white"
                 )}>
                     <AnimatePresence mode="wait" initial={false}>
@@ -84,15 +84,21 @@ const AccordionItem = ({ question, answer, isOpen, onClick, index }: AccordionIt
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                        transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
                         className="overflow-hidden"
                     >
-                        <div className="px-6 pb-5">
-                            <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-4" />
-                            <p className="text-slate-400 leading-relaxed">
+                        <motion.div 
+                            initial={{ y: -10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -10, opacity: 0 }}
+                            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+                            className="px-6 pb-6"
+                        >
+                            <div className="h-px bg-gradient-to-r from-blue-500/30 via-cyan-500/20 to-transparent mb-5" />
+                            <p className="text-slate-300 leading-relaxed text-[1.05rem]">
                                 {answer}
                             </p>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

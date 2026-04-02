@@ -52,7 +52,7 @@ export default function Pricing() {
                                 </div>
                             )}
 
-                            <div className="relative group h-full flex flex-col bg-slate-950/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 p-8">
+                            <div className="relative group h-full flex flex-col bg-slate-950/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 p-8 pb-12 md:pb-16">
                                 <ShineBorder
                                     className="!absolute inset-0 !w-full !h-full !p-[1px] !rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"
                                     shineColor={plan.popular ? ["#A07CFE", "#FE8FB5", "#FFBE7B"] : ["#3b82f6", "#06b6d4", "#22c55e"]}
