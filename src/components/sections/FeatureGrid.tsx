@@ -98,7 +98,7 @@ export default function FeatureGrid() {
                                         whileHover={{
                                             rotate: [0, -10, 10, -10, 10, 0],
                                             scale: 1.2,
-                                            transition: { duration: 0.4, type: "spring", stiffness: 300 }
+                                            transition: { duration: 0.5, ease: "easeInOut" }
                                         }}
                                         className="relative z-10"
                                     >

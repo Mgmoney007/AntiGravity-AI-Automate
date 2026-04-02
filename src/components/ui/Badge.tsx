@@ -28,7 +28,7 @@ const Badge = ({ variant = 'purple', children, className }: BadgeProps) => {
                         mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                         maskComposite: "subtract",
                         WebkitClipPath: "padding-box",
-                        // @ts-ignore - Custom CSS variable
+                        // @ts-expect-error - Custom CSS variable
                         "--bg-size": "300%",
                     }}
                 />

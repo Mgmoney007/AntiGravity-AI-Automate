@@ -1,0 +1,122 @@
+﻿
+> temp-app@0.1.0 lint
+> eslint
+
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\HeroHeadline.tsx
+  7:20  warning  'Pencil' is defined but never used  @typescript-eslint/no-unused-vars
+  7:40  warning  'Send' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\Scanner\index.tsx
+    3:36  warning  'useState' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   19:34  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   28:28  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  139:9   warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\Scanner\index.tsx:139:9
+  137 |
+  138 |         // 1. Scanner Controller (Particles for Scanner Beam)
+> 139 |         class ParticleScanner {
+      |         ^^^^^^^^^^^^^^^^^^^^^^^
+> 140 |             canvas: HTMLCanvasElement;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 141 |             ctx: CanvasRenderingContext2D;
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 490 |             }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 491 |         }
+      | ^^^^^^^^^^ Inline `class` declarations are not supported
+  492 |
+  493 |
+  494 |         // 2. Background Particle System (Three.js)
+
+  react-hooks/unsupported-syntax
+  144:24  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  266:38  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  282:37  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  294:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  495:9   warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\Scanner\index.tsx:495:9
+  493 |
+  494 |         // 2. Background Particle System (Three.js)
+> 495 |         class ParticleSystem {
+      |         ^^^^^^^^^^^^^^^^^^^^^^
+> 496 |             canvas: HTMLCanvasElement;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 497 |             scene: THREE.Scene | null = null;
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 661 |             }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 662 |         }
+      | ^^^^^^^^^^ Inline `class` declarations are not supported
+  663 |
+  664 |
+  665 |         // 3. Card Stream Controller (Logic for cards)
+
+        react-hooks/unsupported-syntax
+  666:9   warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\Scanner\index.tsx:666:9
+  664 |
+  665 |         // 3. Card Stream Controller (Logic for cards)
+> 666 |         class CardStreamController {
+      |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 667 |             container: HTMLDivElement;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 668 |             cardLine: HTMLDivElement;
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 975 |             }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 976 |         }
+      | ^^^^^^^^^^ Inline `class` declarations are not supported
+  977 |
+  978 |
+  979 |         // --- INITIALIZATION ---
+
+                      react-hooks/unsupported-syntax
+  684:27  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  882:44  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  971:74  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\StatsCard.tsx
+  4:8  warning  'Badge' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\sections\FinalCTA.tsx
+  10:11  warning  'isLight' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\sections\HeroSection.tsx
+  8:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\sections\IntegrationDiagram.tsx
+  78:11  warning  'BG' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\sections\LogoStrip.tsx
+  9:11  warning  'isLight' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\sections\Testimonials.tsx
+   8:5   warning  'animate' is defined but never used                              @typescript-eslint/no-unused-vars
+   9:5   warning  'useMotionValueEvent' is defined but never used                  @typescript-eslint/no-unused-vars
+  10:5   warning  'PanInfo' is defined but never used                              @typescript-eslint/no-unused-vars
+  80:21  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  80:29  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\ui\Badge.tsx
+  31:25  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+C:\Users\mgarbo\Antigravity- AI Automation\src\components\ui\PremiumCard.tsx
+  47:11  warning  'rotateX' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  48:11  warning  'rotateY' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  57:11  warning  'style' is assigned a value but never used    @typescript-eslint/no-unused-vars
+
+Γ£û 29 problems (12 errors, 17 warnings)
+

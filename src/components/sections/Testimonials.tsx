@@ -77,7 +77,7 @@ function TestimonialCard({
                     ))}
                 </div>
                 <p className="text-lg mb-6 text-white group-hover:text-white/90 transition-colors">
-                    "{quote}"
+                    <span className="text-cyan-400">&quot;</span>{quote}<span className="text-cyan-400">&quot;</span>
                 </p>
             </div>
             <div>

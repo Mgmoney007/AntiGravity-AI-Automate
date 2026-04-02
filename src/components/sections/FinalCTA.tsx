@@ -1,5 +1,8 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Button from '../ui/Button';
+import { StrategyModal } from '../ui/StrategyModal';
 
 interface FinalCTAProps {
     theme?: 'dark' | 'light';
@@ -7,6 +10,7 @@ interface FinalCTAProps {
 
 const FinalCTA = ({ theme = 'dark' }: FinalCTAProps) => {
     const isLight = theme === 'light';
+    const [isStrategyModalOpen, setIsStrategyModalOpen] = useState(false);
 
     return (
         <section id="contact" className="py-32 relative overflow-hidden">
@@ -21,7 +25,12 @@ const FinalCTA = ({ theme = 'dark' }: FinalCTAProps) => {
                     Stop trading time for money. Join the businesses running on autopilot with AI AUTOMATE.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                    <Button 
+                        variant="primary" 
+                        size="lg" 
+                        className="w-full sm:w-auto"
+                        onClick={() => setIsStrategyModalOpen(true)}
+                    >
                         Book Strategy Call
                     </Button>
                     <Button variant="secondary" size="lg" className="w-full sm:w-auto">
@@ -29,6 +38,12 @@ const FinalCTA = ({ theme = 'dark' }: FinalCTAProps) => {
                     </Button>
                 </div>
             </div>
+
+            {/* Strategy Call Modal Popup */}
+            <StrategyModal 
+                isOpen={isStrategyModalOpen} 
+                onClose={() => setIsStrategyModalOpen(false)} 
+            />
         </section>
     );
 };
