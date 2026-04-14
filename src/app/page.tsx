@@ -10,12 +10,12 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Scanner from "@/components/Scanner";
 
-import ProceduralGroundBackground from "@/components/ui/ProceduralGroundBackground";
+import UnicornBackground from "@/components/ui/UnicornBackground";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-      <ProceduralGroundBackground />
+      <UnicornBackground />
       <HeroHeader />
       <HeroSection />
       <Scanner />
