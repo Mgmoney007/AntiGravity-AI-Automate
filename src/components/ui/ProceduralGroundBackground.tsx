@@ -53,20 +53,22 @@ const ProceduralGroundBackground: React.FC = () => {
         float ripples = sin(gridUv.y * 18.0 + n * 8.0 + u_time * 0.5);
         
         // Neon Topographic Lines
-        float topoLine = smoothstep(0.03, 0.0, abs(ripples));
-        
+        float topoLine = smoothstep(0.05, 0.0, abs(ripples));
+
         // Color Palette
         vec3 baseColor = vec3(0.04, 0.03, 0.12); // Deep Space
         vec3 accentColor = vec3(0.1, 0.3, 0.8);   // Electric Blue
-        vec3 neonColor = vec3(0.6, 0.2, 1.0);     // Neon Purple
-        
+        vec3 neonPurple = vec3(0.6, 0.2, 1.0);    // Neon Purple
+        vec3 neonCyan   = vec3(0.0, 0.8, 1.0);    // Neon Cyan
+        vec3 neonColor  = mix(neonPurple, neonCyan, n); // Shift purple→cyan with noise
+
         // Composite
         vec3 finalColor = mix(baseColor, accentColor, n * 0.6);
-        finalColor += topoLine * neonColor * depth * 0.4;
-        
+        finalColor += topoLine * neonColor * depth * 1.4;
+
         // Horizon Fog / Fade
         float fade = smoothstep(0.1, -1.0, uv.y);
-        finalColor *= (1.0 - length(uv) * 0.45) * (1.0 - fade);
+        finalColor *= (1.0 - length(uv) * 0.25) * (1.0 - fade * 0.7);
 
         gl_FragColor = vec4(finalColor, 1.0);
       }
@@ -141,7 +143,7 @@ const ProceduralGroundBackground: React.FC = () => {
       <canvas
         ref={canvasRef}
         className="w-full h-full block touch-none"
-        style={{ filter: 'contrast(1.1) brightness(0.9)' }}
+        style={{ filter: 'contrast(1.4) brightness(1.25) saturate(1.3)' }}
       />
     </div>
   );

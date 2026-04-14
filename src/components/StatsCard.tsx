@@ -1,13 +1,26 @@
 "use client";
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import Badge from './ui/Badge';
 import NumberTicker from './ui/NumberTicker';
+import { ShineBorder } from './ui/shine-border';
 import { Clock, TrendingUp, Zap } from 'lucide-react';
 
 const StatsCard = () => {
     return (
-        <div className="glass-panel mx-auto mt-8 md:mt-12 max-w-4xl rounded-2xl md:rounded-3xl p-4 md:p-8 backdrop-blur-xl border border-white/10 shadow-2xl bg-brand-navy/80">
+        <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="relative glass-panel mx-auto mt-8 md:mt-12 max-w-4xl rounded-2xl md:rounded-3xl p-4 md:p-8 backdrop-blur-xl border border-white/10 shadow-2xl bg-brand-navy/80"
+        >
+            <ShineBorder
+                borderWidth={1}
+                duration={10}
+                shineColor={["#7C3AED", "#06B6D4", "#F97316"]}
+            />
             {/* Bento Grid Stats */}
             <div className="grid grid-cols-3 gap-2 md:gap-6">
                 {/* Card 1: Hours Saved */}
@@ -56,7 +69,7 @@ const StatsCard = () => {
                     <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-white/80 uppercase tracking-widest z-10 mt-1 text-center leading-tight">Efficiency Boost</p>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
