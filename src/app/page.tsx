@@ -10,12 +10,12 @@ import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Scanner from "@/components/Scanner";
 
-import UnicornBackground from "@/components/ui/UnicornBackground";
+import { DottedSurface } from "@/components/ui/dotted-surface";
 
 export default function Home() {
   return (
     <main className="min-h-screen relative">
-      <UnicornBackground />
+      <DottedSurface />
       <HeroHeader />
       <HeroSection />
       <Scanner />
