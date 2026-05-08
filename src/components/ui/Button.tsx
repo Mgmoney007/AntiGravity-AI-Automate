@@ -15,7 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
         const variants = {
             primary: "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300 border border-white/10 cursor-pointer relative overflow-hidden",
-            secondary: "glass-panel text-brand-cyan hover:bg-white/10 hover:-translate-y-1 transition-transform cursor-pointer border border-brand-cyan/30",
+            secondary: "glass-panel text-white hover:bg-white/10 hover:-translate-y-1 transition-transform cursor-pointer border border-white/30",
             ghost: "bg-transparent text-text-secondary hover:text-white cursor-pointer hover:bg-white/5"
         };
 
