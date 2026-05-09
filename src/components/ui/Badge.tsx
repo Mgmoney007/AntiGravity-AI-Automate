@@ -59,12 +59,23 @@ const Badge = ({ variant = 'purple', children, className }: BadgeProps) => {
 
     if (variant === 'orange-pill') {
         return (
-            <span className={cn(
-                "inline-block rounded-full bg-gradient-to-r from-cta to-red-500 px-3 py-1 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transform -rotate-2",
-                className
-            )}>
+            <motion.span
+                animate={{
+                    boxShadow: [
+                        '0 0 20px rgba(249,115,22,0.3)',
+                        '0 0 45px rgba(249,115,22,0.65)',
+                        '0 0 20px rgba(249,115,22,0.3)',
+                    ],
+                }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+                className={cn(
+                    "relative inline-block rounded-full bg-gradient-to-r from-cta to-red-500 px-3 py-1 text-sm font-bold text-white transform -rotate-2",
+                    className
+                )}
+            >
+                <span className="absolute -inset-[3px] rounded-full bg-gradient-to-r from-cta to-red-500 opacity-30 motion-safe:animate-ping" aria-hidden="true" />
                 {children}
-            </span>
+            </motion.span>
         );
     }
 
