@@ -39,17 +39,17 @@ const StatsCard = () => {
                 </div>
 
                 {/* Card 2: Client Revenue */}
-                <div className="relative overflow-hidden rounded-xl md:rounded-2xl bg-brand-black/60 border border-brand-cyan/30 p-2 md:p-8 flex flex-col items-center justify-center gap-1 md:gap-3 group hover:bg-brand-black/80 transition-all duration-500 hover:border-brand-cyan/50 hover:shadow-[0_0_40px_-5px_rgba(6,182,212,0.4)]">
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative overflow-hidden rounded-xl md:rounded-2xl bg-brand-black/60 border border-blue-500/30 p-2 md:p-8 flex flex-col items-center justify-center gap-1 md:gap-3 group hover:bg-brand-black/80 transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_0_40px_-5px_rgba(59,130,246,0.4)]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="p-1.5 md:p-3 rounded-full bg-brand-cyan/20 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-500 border border-brand-cyan/30">
-                        <TrendingUp className="w-4 h-4 md:w-6 md:h-6 text-brand-cyan" />
+                    <div className="p-1.5 md:p-3 rounded-full bg-blue-500/20 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-500 border border-blue-500/30">
+                        <TrendingUp className="w-4 h-4 md:w-6 md:h-6 text-blue-500" />
                     </div>
 
                     <div className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white flex items-baseline tracking-tight z-10">
-                        <span className="text-brand-cyan text-lg sm:text-3xl md:text-4xl lg:text-5xl mr-0.5 md:mr-1 font-semibold">$</span>
+                        <span className="text-blue-500 text-lg sm:text-3xl md:text-4xl lg:text-5xl mr-0.5 md:mr-1 font-semibold">$</span>
                         <NumberTicker value={2} delay={0.4} />
-                        <span className="text-brand-cyan text-lg sm:text-3xl md:text-4xl lg:text-5xl ml-1 font-semibold">M+</span>
+                        <span className="text-blue-500 text-lg sm:text-3xl md:text-4xl lg:text-5xl ml-1 font-semibold">M+</span>
                     </div>
                     <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-white/80 uppercase tracking-widest z-10 mt-1 text-center leading-tight">Client Revenue</p>
                 </div>
