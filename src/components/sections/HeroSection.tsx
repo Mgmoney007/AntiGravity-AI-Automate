@@ -86,9 +86,9 @@ const HeroSection = () => {
                     <StatsCard />
                 </motion.div>
             </motion.div>
-            <StrategyModal 
-                isOpen={isStrategyModalOpen} 
-                onClose={() => setIsStrategyModalOpen(false)} 
+            <StrategyModal
+                isOpen={isStrategyModalOpen}
+                onClose={() => setIsStrategyModalOpen(false)}
             />
         </section>
     );
