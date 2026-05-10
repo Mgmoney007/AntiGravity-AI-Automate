@@ -432,7 +432,7 @@ export default function ClientDashboard() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="section-heading mb-4 text-white filter drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
           >
-            Your AI-Powered Command Center
+            The AI Infrastructure Layer
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -441,7 +441,7 @@ export default function ClientDashboard() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto"
           >
-            An autonomous orchestration ecosystem actively coordinating workflows, agents, CRM automation, routing, and live business intelligence in real time.
+            Unify your workflows, automation, analytics, and execution into one intelligent operational system.
           </motion.p>
         </div>
 
