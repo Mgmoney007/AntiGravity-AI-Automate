@@ -6,24 +6,24 @@ const plans = [
     {
         name: "Starter",
         price: "$19",
-        description: "Ideal for crypto newcomers",
-        features: ["Track 5 tokens", "Limited UGC avatars", "Generate unlimited viral hooks"],
-        cta: "Start Tracking",
+        description: "Ideal for automation newcomers",
+        features: ["Up to 5 active workflows", "Standard agent capabilities", "Basic integrations"],
+        cta: "Start Automating",
         popular: false
     },
     {
         name: "Growth",
         price: "$49",
-        description: "Built for serious crypto investors",
-        features: ["Monitor up to 50 tokens", "Access pro analytics & charts", "DeFi + NFT insights"],
+        description: "Built for scaling operations",
+        features: ["Up to 50 active workflows", "Access pro analytics & routing", "Advanced API integrations"],
         cta: "Upgrade Now",
         popular: true
     },
     {
         name: "Scale",
         price: "$95",
-        description: "Best for crypto power users",
-        features: ["Unlimited token tracking", "Full suite of advanced tools", "Whale wallet alerts & insights"],
+        description: "Best for enterprise automation",
+        features: ["Unlimited active workflows", "Full suite of advanced tools", "Dedicated support & SLAs"],
         cta: "Go Pro",
         popular: false
     }
@@ -38,7 +38,7 @@ export default function Pricing() {
                     <h2 className="section-heading mb-6">
                         Pricing
                     </h2>
-                    <p className="section-subheading mx-auto">Choose the plan that fits your trading style.</p>
+                    <p className="section-subheading mx-auto">Choose the plan that fits your automation needs.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-8">

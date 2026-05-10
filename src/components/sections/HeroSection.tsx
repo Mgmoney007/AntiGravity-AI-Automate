@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
+import { StrategyModal } from '../ui/StrategyModal';
 import HeroHeadline from '../HeroHeadline';
 import StatsCard from '../StatsCard';
 import Badge from '../ui/Badge';
@@ -19,6 +20,8 @@ const fadeUp = {
 };
 
 const HeroSection = () => {
+    const [isStrategyModalOpen, setIsStrategyModalOpen] = useState(false);
+
     return (
         <section className="relative min-h-screen w-full flex flex-col items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
             {/* Background Visuals */}
@@ -63,6 +66,7 @@ const HeroSection = () => {
                     className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-12 justify-center w-full"
                 >
                     <ShimmerButton
+                        onClick={() => setIsStrategyModalOpen(true)}
                         shimmerColor="#7C3AED"
                         background="linear-gradient(135deg, #3B82F6 0%, #7C3AED 100%)"
                         borderRadius="9999px"
@@ -82,6 +86,10 @@ const HeroSection = () => {
                     <StatsCard />
                 </motion.div>
             </motion.div>
+            <StrategyModal 
+                isOpen={isStrategyModalOpen} 
+                onClose={() => setIsStrategyModalOpen(false)} 
+            />
         </section>
     );
 };
