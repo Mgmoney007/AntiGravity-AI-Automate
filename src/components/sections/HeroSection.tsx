@@ -19,10 +19,9 @@ const fadeUp = {
     }
 };
 
-// Shared orb anchor: right edge, vertically centered, 55% off-canvas
-const ORB_SIZE_DESKTOP = 782;   // px — 920 × 0.85
-const ORB_SIZE_TABLET  = 578;
-const ORB_OFFSET_X     = 0.55; // fraction of orb pushed off the right edge
+const ORB_SIZE_DESKTOP = 665;   // px — scaled down to ~85%
+const ORB_SIZE_TABLET  = 491;
+const ORB_OFFSET_X     = 0.55; // 55% of orb pushed off the right edge
 
 const OrbSystem = () => {
     const reducedMotion = useReducedMotion();
@@ -35,33 +34,24 @@ const OrbSystem = () => {
         },
         transition: {
             duration: 38,
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
             repeat: Infinity,
             repeatType: "mirror" as const,
         }
     };
 
-    // Layer 2 — PNG ring float (tiny amplitude, different period)
-    const ringFloat = reducedMotion ? {} : {
-        animate: {
-            y: [0, -9, 2, 0],
-            x: [0, 3, 0, -2, 0],
-        },
-        transition: {
-            duration: 26,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "mirror" as const,
-        }
-    };
 
-    const desktopOffset = `${Math.round(ORB_SIZE_DESKTOP * ORB_OFFSET_X)}px`;
-    const tabletOffset  = `${Math.round(ORB_SIZE_TABLET  * ORB_OFFSET_X)}px`;
+    // We want ORB_OFFSET_X (55%) of the orb to be off-canvas.
+    // Since the layers have translate(-50%, -50%), setting right: 0 places the center exactly on the right edge (50% off-canvas).
+    // To achieve 55% off-canvas, we push the center further right by (ORB_OFFSET_X - 0.5) of its size.
+    const desktopOffset = `${Math.round(ORB_SIZE_DESKTOP * (ORB_OFFSET_X - 0.5))}px`;
+    const tabletOffset  = `${Math.round(ORB_SIZE_TABLET  * (ORB_OFFSET_X - 0.5))}px`;
 
     return (
-        // Anchor container — right-edge, aligned with headline
+        <>
+        {/* Anchor container — positioned relative to the right edge */}
         <div
-            className="absolute top-[14%] pointer-events-none"
+            className="orb-anchor relative pointer-events-none"
             style={{ right: `-${desktopOffset}` }}
             aria-hidden="true"
         >
@@ -79,69 +69,52 @@ const OrbSystem = () => {
             />
 
             {/* ── DEPTH LAYER 1 — Animated video orb (atmospheric energy) ── */}
-            <motion.div
-                style={{
-                    width:  ORB_SIZE_DESKTOP,
-                    height: ORB_SIZE_DESKTOP,
-                    transform: 'translate(-50%, -50%)',
-                    mixBlendMode: 'screen',  // applied here so it blends against the page, not its own stacking context
-                    willChange: 'transform',
-                }}
-                {...videoDrift}
-            >
-                <video
-                    src="/circularorb.webm"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
+            <div style={{ 
+                position: 'absolute', 
+                top: 0, left: 0, 
+                width: ORB_SIZE_DESKTOP, 
+                height: ORB_SIZE_DESKTOP, 
+                transform: 'translate(-50%, -50%)',
+                mixBlendMode: 'screen' 
+            }}>
+                <motion.div
                     style={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'contain',
-                        opacity: 0.75,
-                        filter: 'blur(1px) brightness(1.1) saturate(0.9)',
-                    }}
-                />
-            </motion.div>
-
-            {/* ── DEPTH LAYER 2 — PNG structural ring shell ── */}
-            <motion.div
-                style={{
-                    position: 'absolute',
-                    width:  ORB_SIZE_DESKTOP,
-                    height: ORB_SIZE_DESKTOP,
-                    top:  '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%) translate(-1.2%, 0.8%)',
-                    willChange: 'transform',
-                }}
-                {...ringFloat}
-            >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src="/Orb_image.png"
-                    alt=""
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'contain',
-                        opacity: 0.88,
-                        filter: 'brightness(1.05) contrast(1.08) saturate(0.92)',
                         willChange: 'transform',
                     }}
-                />
-            </motion.div>
+                    {...videoDrift}
+                >
+                    <video
+                        src="/circularorb.webm"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            opacity: 0.75,
+                            filter: 'blur(1px) brightness(1.1) saturate(0.9)',
+                        }}
+                    />
+                </motion.div>
+            </div>
 
-            {/* Tablet responsive overrides via media-query wrapper */}
+
+
+        </div>
+
+            {/* Tablet responsive overrides */}
             <style>{`
                 @media (max-width: 1023px) {
                     .orb-anchor {
-                        right: -${tabletOffset}px !important;
+                        right: -${tabletOffset} !important;
                     }
                 }
             `}</style>
-        </div>
+        </>
     );
 };
 
@@ -161,9 +134,11 @@ const HeroSection = () => {
                 <div className="absolute top-[38%] left-[8%] w-[360px] h-[260px] rounded-full bg-brand-cyan/12 blur-[90px] opacity-55" />
 
                 {/* ── 3-layer orb system — desktop/tablet only ── */}
-                <div className="hidden md:block">
+                {/* We place it in the background layer, using flex to center it vertically. */}
+                <div className="hidden md:flex absolute right-0 top-0 bottom-0 w-1/2 max-w-[800px] items-center justify-end">
                     <OrbSystem />
                 </div>
+
 
                 {/* ── Mobile — minimal background hint only ── */}
                 <div className="md:hidden absolute bottom-0 right-0 w-[280px] h-[280px] rounded-full"
@@ -178,7 +153,7 @@ const HeroSection = () => {
             {/* ── Hero content ── */}
             <motion.div
                 className="max-w-5xl mx-auto flex flex-col items-center text-center z-10"
-                initial="hidden"
+                initial={false}
                 animate="visible"
                 variants={{
                     hidden: {},
@@ -191,7 +166,7 @@ const HeroSection = () => {
                     </Badge>
                 </motion.div>
 
-                <motion.div variants={fadeUp}>
+                <motion.div variants={fadeUp} className="relative z-10 w-full flex justify-center">
                     <HeroHeadline />
                 </motion.div>
 

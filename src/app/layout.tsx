@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Work_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${workSans.variable} antialiased bg-bg-page text-text-primary font-body`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
