@@ -228,7 +228,7 @@ export default function ClientDashboard() {
     if (pulseStage !== "idle") return;
     const pipelineInterval = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % 5);
-    }, 4000);
+    }, 8000);
     return () => clearInterval(pipelineInterval);
   }, [pulseStage]);
 
@@ -290,34 +290,34 @@ export default function ClientDashboard() {
   }, []);
 
   // THE "HOLY SH*T" MOMENT: Grand Cascade Orchestration Sequence
-  // Triggers every 24 seconds, orchestrating an incredible system-wide wave
+  // Triggers every 45 seconds, orchestrating an incredible system-wide wave
   useEffect(() => {
     const triggerSuperPulseSequence = () => {
       // Step 1: Core Burst at AI Operations Core
       setPulseStage("core");
       setFloatingLabel("SYSTEM CASCADE: Core Orchestration Initiated");
-      setFloatingLabelColor("text-fuchsia-400 border-fuchsia-500/40 bg-fuchsia-500/10 shadow-[0_0_15px_rgba(240,70,250,0.2)]");
+      setFloatingLabelColor("text-purple-400 border-purple-500/40 bg-purple-500/10 shadow-[0_0_15px_rgba(168,85,247,0.2)]");
       setTasksRun((prev) => prev + 42);
 
       // Step 2: Cascade through Lead Pipeline
       setTimeout(() => {
         setPulseStage("pipeline");
         setFloatingLabel("SYSTEM CASCADE: Energy Routing Active");
-        setFloatingLabelColor("text-amber-400 border-amber-500/40 bg-amber-500/10");
+        setFloatingLabelColor("text-amber-400 border-amber-500/40 bg-amber-500/10 shadow-[0_0_15px_rgba(245,158,11,0.2)]");
         let step = 0;
         const speedInterval = setInterval(() => {
           setActiveStep(step);
           step++;
           if (step >= 5) clearInterval(speedInterval);
-        }, 300);
-      }, 1500);
+        }, 500);
+      }, 3000);
 
       // Step 3: Performance Graph Peak Spike
       setTimeout(() => {
         setPulseStage("graph");
         setFloatingLabel("SYSTEM CASCADE: Routing Throughput Spike [9.8 GB/s]");
         setFloatingLabelColor("text-cyan-400 border-cyan-500/40 bg-cyan-500/10 shadow-[0_0_15px_rgba(34,211,238,0.2)]");
-      }, 3500);
+      }, 7000);
 
       // Step 4: High-Value CRM Feed Injection
       setTimeout(() => {
@@ -338,22 +338,22 @@ export default function ClientDashboard() {
 
         setCrmActions((prev) => [specialAction, ...prev.slice(0, 3)]);
         setSecondsAgo((prev) => [0, ...prev.slice(0, 3)]);
-      }, 5500);
+      }, 10000);
 
       // Step 5: Reset back to standard loop
       setTimeout(() => {
         setPulseStage("idle");
-      }, 9500);
+      }, 15000);
     };
 
-    // First sequence triggers after 12s, then loops every 28s
+    // First sequence triggers after 15s, then loops every 45s
     const initialTimeout = setTimeout(() => {
       triggerSuperPulseSequence();
-    }, 12000);
+    }, 15000);
 
     const interval = setInterval(() => {
       triggerSuperPulseSequence();
-    }, 28000);
+    }, 45000);
 
     return () => {
       clearTimeout(initialTimeout);
@@ -370,44 +370,41 @@ export default function ClientDashboard() {
   return (
     <section id="client-dashboard" className="py-24 relative overflow-hidden bg-transparent">
       {/* 1. ENVIRONMENTAL DEPTH: Immersive atmospheric light diffusion & digital grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40 -z-20" />
-      <div className="absolute inset-0 bg-radial-vignette opacity-60 pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:48px_48px] pointer-events-none opacity-40 -z-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] [background-size:96px_96px] pointer-events-none opacity-20 -z-20" />
 
       {/* Volumetric ambient lighting orbs shifting slowly */}
       <motion.div
-        className="absolute top-[15%] left-[5%] w-[600px] h-[600px] rounded-full bg-cyan-500/5 blur-[140px] pointer-events-none -z-10"
+        className="absolute top-[10%] left-[10%] w-[800px] h-[800px] rounded-full bg-cyan-500/5 blur-[160px] pointer-events-none -z-10 mix-blend-screen"
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          x: [0, 30, 0],
-          y: [0, -30, 0]
+          scale: [1, 1.1, 1],
+          opacity: [0.15, 0.25, 0.15],
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[20%] right-[5%] w-[700px] h-[700px] rounded-full bg-purple-500/5 blur-[160px] pointer-events-none -z-10"
+        className="absolute bottom-[10%] right-[10%] w-[900px] h-[900px] rounded-full bg-fuchsia-500/5 blur-[180px] pointer-events-none -z-10 mix-blend-screen"
         animate={{
-          scale: [1.1, 0.9, 1.1],
-          opacity: [0.4, 0.6, 0.4],
-          x: [0, -40, 0],
-          y: [0, 40, 0]
+          scale: [1.1, 1, 1.1],
+          opacity: [0.15, 0.25, 0.15],
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Global Synchronized "Holy Sh*t" Moment Header HUD Indicator */}
       <AnimatePresence>
         {pulseStage !== "idle" && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
+            initial={{ opacity: 0, y: -30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none"
           >
-            <div className="flex items-center gap-3 bg-fuchsia-500/10 border border-fuchsia-500/30 px-5 py-2 rounded-full backdrop-blur-xl shadow-[0_0_30px_rgba(240,70,250,0.3)]">
-              <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
-              <span className="text-[10px] font-mono font-black text-fuchsia-400 uppercase tracking-widest">
-                SYSTEM CASCADE ORCHESTRATION EVENT IN PROGRESS
+            <div className="flex items-center gap-4 bg-fuchsia-950/60 border border-fuchsia-500/40 px-6 py-2.5 rounded-full backdrop-blur-2xl shadow-[0_0_40px_rgba(240,70,250,0.4)]">
+              <span className="w-2.5 h-2.5 rounded-full bg-fuchsia-400 animate-pulse" style={{ boxShadow: '0 0 10px #f046fa' }} />
+              <span className="text-[11px] font-mono font-black text-fuchsia-100 uppercase tracking-[0.2em] drop-shadow-md">
+                SYSTEM CASCADE ORCHESTRATION EVENT
               </span>
             </div>
           </motion.div>
@@ -417,7 +414,7 @@ export default function ClientDashboard() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         
         {/* Header Title */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -435,7 +432,7 @@ export default function ClientDashboard() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="section-heading mb-4 text-white filter drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
           >
-            Your AI-Powered Command Center
+            The AI Infrastructure Layer
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -444,12 +441,21 @@ export default function ClientDashboard() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto"
           >
-            An autonomous orchestration ecosystem actively coordinating workflows, agents, CRM automation, routing, and live business intelligence in real time.
+            Unify your workflows, automation, analytics, and execution into one intelligent operational system.
           </motion.p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Bento Grid Wrapper with Environmental Glow */}
+        <div className="relative group/dashboard">
+          
+          {/* Main edge glow with smooth feathered falloff */}
+          <div className="absolute -inset-4 md:-inset-10 bg-gradient-to-r from-brand-cyan/5 via-fuchsia-500/5 to-emerald-500/5 rounded-[3rem] blur-2xl md:blur-3xl opacity-40 group-hover/dashboard:opacity-70 transition-opacity duration-1000 ease-out pointer-events-none z-0" />
+
+          {/* Faint ambient light interaction layer */}
+          <div className="absolute inset-0 bg-white/5 rounded-[3rem] blur-[80px] opacity-10 group-hover/dashboard:opacity-30 transition-opacity duration-1000 ease-out pointer-events-none z-0" />
+
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-stretch relative z-10">
           
           {/* Left Column: Lead Pipeline & Live Performance Monitoring (8 Columns Wide) */}
           <div className="lg:col-span-8 flex flex-col justify-between h-full gap-6">
@@ -460,10 +466,10 @@ export default function ClientDashboard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className={`w-full flex flex-col justify-between glass-panel rounded-3xl p-6 md:p-8 border relative overflow-hidden transition-all duration-700 ${
+              className={`w-full flex flex-col justify-between glass-panel rounded-3xl p-8 md:p-10 border relative overflow-hidden transition-all duration-700 ${
                 pulseStage === "pipeline" 
-                  ? "border-fuchsia-500/50 shadow-[0_0_40px_rgba(240,70,250,0.15)] bg-fuchsia-950/5" 
-                  : "border-glass-border shadow-md"
+                  ? "border-amber-500/30 shadow-[0_0_60px_rgba(245,158,11,0.15)] bg-amber-950/10" 
+                  : "border-white/5 shadow-xl bg-brand-black/40"
               }`}
             >
               <div>
@@ -602,13 +608,13 @@ export default function ClientDashboard() {
                                 : "bg-white/5 border border-white/10 text-white/50"
                             }`}
                             animate={isActive ? {
-                              scale: [1, 1.15, 1],
-                              rotate: [0, 5, -5, 0],
+                              scale: [1, 1.08, 1],
+                              boxShadow: [`0 0 0px ${node.activeColor}`, `0 0 20px ${node.activeColor}`, `0 0 0px ${node.activeColor}`]
                             } : {}}
                             transition={{
-                              duration: 2,
+                              duration: 3,
                               repeat: Infinity,
-                              repeatType: "reverse",
+                              ease: "easeInOut",
                             }}
                           >
                             <IconComponent className="w-5 h-5" />
@@ -702,10 +708,10 @@ export default function ClientDashboard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={`w-full flex flex-col justify-between glass-panel rounded-3xl p-6 md:p-8 relative overflow-hidden group border transition-all duration-700 ${
+              className={`w-full flex flex-col justify-between glass-panel rounded-3xl p-8 md:p-10 relative overflow-hidden group border transition-all duration-700 ${
                 pulseStage === "graph"
-                  ? "border-fuchsia-500/50 shadow-[0_0_40px_rgba(240,70,250,0.15)] bg-fuchsia-950/5"
-                  : "border-glass-border shadow-glow"
+                  ? "border-cyan-500/30 shadow-[0_0_60px_rgba(34,211,238,0.15)] bg-cyan-950/10"
+                  : "border-white/5 shadow-xl bg-brand-black/40"
               }`}
             >
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 z-10">
@@ -1077,10 +1083,10 @@ export default function ClientDashboard() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={`w-full flex-1 h-full flex flex-col justify-between glass-panel rounded-3xl p-6 md:p-8 border relative overflow-hidden transition-all duration-700 ${
+              className={`w-full flex-1 h-full flex flex-col justify-between glass-panel rounded-3xl p-8 md:p-10 border relative overflow-hidden transition-all duration-700 ${
                 pulseStage === "core"
-                  ? "border-fuchsia-500/50 shadow-[0_0_40px_rgba(240,70,250,0.15)] bg-fuchsia-950/5"
-                  : "border-glass-border shadow-md"
+                  ? "border-purple-500/30 shadow-[0_0_60px_rgba(168,85,247,0.15)] bg-purple-950/10"
+                  : "border-white/5 shadow-xl bg-brand-black/40"
               }`}
             >
               <div>
@@ -1304,10 +1310,10 @@ export default function ClientDashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className={`lg:col-span-12 flex flex-col justify-between glass-panel rounded-3xl p-6 md:p-8 border transition-all duration-700 ${
+            className={`lg:col-span-12 flex flex-col justify-between glass-panel rounded-3xl p-8 md:p-10 border transition-all duration-700 ${
               pulseStage === "crm"
-                ? "border-emerald-500/50 shadow-[0_0_40px_rgba(16,185,129,0.15)] bg-emerald-950/5"
-                : "border-glass-border shadow-md"
+                ? "border-emerald-500/30 shadow-[0_0_60px_rgba(16,185,129,0.15)] bg-emerald-950/10"
+                : "border-white/5 shadow-xl bg-brand-black/40"
             }`}
           >
             <div>
@@ -1426,6 +1432,7 @@ export default function ClientDashboard() {
             </div>
           </motion.div>
 
+          </div>
         </div>
         
       </div>

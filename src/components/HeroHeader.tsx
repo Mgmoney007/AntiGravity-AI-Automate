@@ -1,14 +1,21 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Button from './ui/Button';
+import { StrategyModal } from './ui/StrategyModal';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Layers, Menu, X } from 'lucide-react';
 
 const HeroHeader = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
+    const [isStrategyModalOpen, setIsStrategyModalOpen] = useState(false);
+
+    useEffect(() => {
+        // Ensure page starts at the top when it loads
+        window.scrollTo(0, 0);
+    }, []);
 
     const { scrollY } = useScroll();
 
@@ -53,11 +60,14 @@ const HeroHeader = () => {
 
                 {/* CTAs (Desktop) */}
                 <div className="hidden md:flex items-center gap-2">
-                    <Link href="#contact">
-                        <Button variant="primary" size="sm" className="rounded-full px-5 inline-flex whitespace-nowrap">
-                            Book Audit
-                        </Button>
-                    </Link>
+                    <Button 
+                        variant="primary" 
+                        size="sm" 
+                        className="rounded-full px-5 inline-flex whitespace-nowrap"
+                        onClick={() => setIsStrategyModalOpen(true)}
+                    >
+                        Book Audit
+                    </Button>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -85,16 +95,27 @@ const HeroHeader = () => {
                             <Link href="#process" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white hover:text-cyan-400 py-2 transition-all">Process</Link>
                             <Link href="#case-studies" onClick={() => setMobileMenuOpen(false)} className="text-base font-medium text-white hover:text-cyan-400 py-2 transition-all">Case Studies</Link>
                             <div className="pt-2 border-t border-white/10">
-                                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                                    <Button variant="primary" size="md" className="w-full rounded-full">
-                                        Book Audit
-                                    </Button>
-                                </Link>
+                                <Button 
+                                    variant="primary" 
+                                    size="md" 
+                                    className="w-full rounded-full"
+                                    onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        setIsStrategyModalOpen(true);
+                                    }}
+                                >
+                                    Book Audit
+                                </Button>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <StrategyModal 
+                isOpen={isStrategyModalOpen} 
+                onClose={() => setIsStrategyModalOpen(false)} 
+            />
         </motion.header>
     );
 };
