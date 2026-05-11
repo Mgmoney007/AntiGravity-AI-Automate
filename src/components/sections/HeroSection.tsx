@@ -21,7 +21,7 @@ const fadeUp = {
 
 const ORB_SIZE_DESKTOP = 665;   // px — scaled down to ~85%
 const ORB_SIZE_TABLET  = 491;
-const ORB_OFFSET_X     = 0.55; // 55% of orb pushed off the right edge
+const ORB_OFFSET_X     = 0.40; // 40% of orb pushed off the right edge (60% visible)
 
 const OrbSystem = () => {
     const reducedMotion = useReducedMotion();
@@ -41,18 +41,18 @@ const OrbSystem = () => {
     };
 
 
-    // We want ORB_OFFSET_X (55%) of the orb to be off-canvas.
+    // We want ORB_OFFSET_X (40%) of the orb to be off-canvas.
     // Since the layers have translate(-50%, -50%), setting right: 0 places the center exactly on the right edge (50% off-canvas).
-    // To achieve 55% off-canvas, we push the center further right by (ORB_OFFSET_X - 0.5) of its size.
-    const desktopOffset = `${Math.round(ORB_SIZE_DESKTOP * (ORB_OFFSET_X - 0.5))}px`;
-    const tabletOffset  = `${Math.round(ORB_SIZE_TABLET  * (ORB_OFFSET_X - 0.5))}px`;
+    // To achieve 40% off-canvas, we push the center further left by adjusting the right value.
+    const desktopOffset = Math.round(ORB_SIZE_DESKTOP * (0.5 - ORB_OFFSET_X));
+    const tabletOffset  = Math.round(ORB_SIZE_TABLET  * (0.5 - ORB_OFFSET_X));
 
     return (
         <>
         {/* Anchor container — positioned relative to the right edge */}
         <div
             className="orb-anchor relative pointer-events-none"
-            style={{ right: `-${desktopOffset}` }}
+            style={{ right: `${desktopOffset}px` }}
             aria-hidden="true"
         >
             {/* ── DEPTH LAYER 3 — Atmospheric glow (deepest, static) ── */}
@@ -63,7 +63,6 @@ const OrbSystem = () => {
                     height: ORB_SIZE_DESKTOP,
                     transform: 'translate(-50%, -50%) translateX(8%)',
                     background: 'radial-gradient(ellipse at 60% 50%, rgba(99,102,241,0.28) 0%, rgba(124,58,237,0.12) 35%, rgba(6,182,212,0.06) 60%, transparent 80%)',
-                    filter: 'blur(48px)',
                     willChange: 'transform',
                 }}
             />
@@ -71,7 +70,7 @@ const OrbSystem = () => {
             {/* ── DEPTH LAYER 1 — Animated video orb (atmospheric energy) ── */}
             <div style={{ 
                 position: 'absolute', 
-                top: 0, left: 0, 
+                top: '-6px', left: 0, 
                 width: ORB_SIZE_DESKTOP, 
                 height: ORB_SIZE_DESKTOP, 
                 transform: 'translate(-50%, -50%)',
@@ -110,7 +109,7 @@ const OrbSystem = () => {
             <style>{`
                 @media (max-width: 1023px) {
                     .orb-anchor {
-                        right: -${tabletOffset} !important;
+                        right: ${tabletOffset}px !important;
                     }
                 }
             `}</style>
