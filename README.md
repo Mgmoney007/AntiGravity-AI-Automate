@@ -1,34 +1,25 @@
-<div align="center">
+<img width="1600" height="420" alt="neon_great_og_banner" src="https://github.com/user-attachments/assets/4e494a51-e8a8-4199-a74b-3f112c52f2a9" /><div align="center">
 
-<pre>
- $$$$$$\                                 $$\           $$$$$$$\                      
-$$  __$$\                                $$ |          $$  __$$\                     
-$$ /  \__| $$$$$$\   $$$$$$\   $$$$$$\ $$$$$$\         $$ |  $$ | $$$$$$\ $$\    $$\ 
-$$ |$$$$\ $$  __$$\ $$  __$$\  \____$$\\_$$  _|        $$ |  $$ |$$  __$$\\$$\  $$  |
-$$ |\_$$ |$$ |  \__|$$$$$$$$ | $$$$$$$ | $$ |          $$ |  $$ |$$$$$$$$ |\$$\$$  / 
-$$ |  $$ |$$ |      $$   ____|$$  __$$ | $$ |$$\       $$ |  $$ |$$   ____| \$$$  /  
-\$$$$$$  |$$ |      \$$$$$$$\ \$$$$$$$ | \$$$$  |      $$$$$$$  |\$$$$$$$\   \$  /   
- \______/ \__|       \_______| \_______|  \____/       \_______/  \_______|   \_/    
-</pre>
 
-</div>
+# 🌌 AntiGravity AI Automate
+### Elevate Your Workflow with Next-Gen Intelligence
+**Modern • High-Conversion • High-Performance**
 
-# AntiGravity AI Automate
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animation-FF0055?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 
-A modern, high-conversion landing page for AI automation services built with Next.js 15 and Tailwind CSS v4.
-
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=flat-square&logo=tailwind-css)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animation-FF0055?style=flat-square&logo=framer)
+[Explore the Site](#) • [View Components](#project-structure) • [Report Bug](https://github.com/Mgmoney007/AntiGravity-AI-Automate/issues)
 
 ## ✨ Features
 
-- **Premium UI/UX** - Glassmorphism, gradients, and micro-animations
-- **Mobile-First Design** - Fully responsive with hamburger navigation
-- **Interactive Components** - 3D particle scanner, animated stats, hover effects
-- **Conversion Optimized** - Strategic CTA placement and visual hierarchy
-- **Modern Stack** - Next.js 15, React 19, TypeScript, Tailwind CSS v4
+**Premium UI/UX** - Glassmorphism, gradients, and micro-animations
+**Mobile-First Design** - Fully responsive with hamburger navigation
+**Interactive Components** - 3D particle scanner, animated stats, hover effects
+**Conversion Optimized** - Strategic CTA placement and visual hierarchy
+**Modern Stack** - Next.js 15, React 19, TypeScript, Tailwind CSS v4
+
 
 ## 🚀 Quick Start
 
@@ -51,6 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 📁 Project Structure
 
 ```
+#
 src/
 ├── app/
 │   ├── globals.css      # Global styles & Tailwind config
@@ -73,6 +65,7 @@ src/
 │   └── Scanner/         # 3D particle scanner module
 └── lib/
     └── utils.ts         # Utility functions
+#
 ```
 
 ## 🎨 Design System
@@ -112,3 +105,33 @@ MIT License - feel free to use for your own projects.
 ---
 
 Built with ❤️ by The Great OG
+
+
+
+---
+
+## 🚀 Deployment & Setup
+
+Get the environment running locally in under 60 seconds:
+
+1.  **Clone the Vision**
+    ```bash
+    git clone [https://github.com/Mgmoney007/AntiGravity-AI-Automate.git](https://github.com/Mgmoney007/AntiGravity-AI-Automate.git)
+    cd AntiGravity-AI-Automate
+    ```
+
+2.  **Initialize Environment**
+    ```bash
+    npm install
+    ```
+
+3.  **Ignition**
+    ```bash
+    npm run dev
+    ```
+
+Navigate to `http://localhost:3000` to see the future in motion.
+
+---
+
+<img width="2752" height="1536" alt="Gemini_Generated_Image_80lhv680lhv680lh" src="https://github.com/user-attachments/assets/dae959ba-bed4-4257-8f9a-a73b3cd9077d" />
